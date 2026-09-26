@@ -407,6 +407,9 @@ RUN_PARKOUR = dict(
          "fusion, no warping, no second runner, no weapon, no orange skin on the runner, no blue skin on the runner, no "
          "smile, no grin, no fish, no boat, no metal, no split screen, no text, no anime style, no CG look",
 )
+# G9p came back with HUMAN villagers (the two carrying the beam, two behind the nets): Wan3 drops the house-negatives
+# wall, and "two villagers" with no picture tied to them drew people. Every new Wan3 prompt carries this line.
+NO_HUMANS = "no humans, no human faces, no human hair, no human skin; everyone is of the same gilled people"
 # CEO 2026-09-27 on the wave (N7): "MultiCut 15s ... 3 ตัวละครนี้ ดูพยายามที่จะผ่านมันไปให้ได้ มีการจับเชือกไว้แน่น โต้คลื่นได้ 1 ลูก
 # แต่ถัดไปมันใหญ่กว่านั้นมาก แล้วให้คลื่นซัดมาที่จอ ปิดจบด้วยจอดำ". Eight cuts of about 2 s in the parkour pacing he chose
 # for the run. Prefix "x" puts it under the mount guard, so THE MOUNT's picture cannot be left out again (G5).
@@ -463,7 +466,7 @@ WAVE_MULTICUT = dict(
     crit=B.DIALOGUE_NEG + ", no slow motion, no dissolve, no crossfade, no boat, no raft, no rock, no lit lamp, no light "
          "wider than 2 metres around the child except the far lightning, no cyan or magenta glow in the water, no one "
          "falling off before the last cut, no floating, no extra limbs, no duplicate riders, no warping, no text, no "
-         "split screen",
+         "split screen, " + NO_HUMANS,
 )
 GROUPS["g5w"] = ["x03"]
 GROUPS["g9"] = ["r01"]
