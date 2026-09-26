@@ -301,11 +301,46 @@ RUN_MULTICUT = dict(
          "weapon, no orange skin on the runner, no blue skin on the runner, no calm faces, no smile, no grin, no fish, no "
          "boat, no metal, no split screen, no text",
 )
+# The same run as COVERAGE for the edit (researched 2026-09-26): Alibaba's Wan 3.0 guide says "4~6 seconds per shot, with
+# timestamp annotations" and "Shot 1 [0-3 s] ..., Hard cut transition"; ByteDance advises chases and montages be made as
+# separate shots and cut together in the edit; no vendor documents sub-second cuts, and no Wan3 clip of ours held more
+# than 4. So ten 3-second shots, each a new angle with its own obstacle and a fast camera, which the CEO cuts to
+# 0.5-0.8 s pieces and intercuts in CapCut, with G1's own 9 s of run as more pieces.
+RUN_COVER_SHOTS = [
+    "Extreme wide aerial from very high, the drone diving fast toward the village of giant mangrove trees on glass-clear "
+    "water under the huge moon; a tiny yellow figure bursts out onto a walkway and the camera swoops down to him running.",
+    "Low angle from under the walkway, looking up between the planks, tracking fast: his bare webbed feet slam over the "
+    "gaps, drops falling toward the lens; then he ducks under a kelp net hung to dry right across the walkway.",
+    "Fast side tracking at his height, handheld: two villagers carry a long wooden pole across his path; he slides under "
+    "it on the wet planks and springs straight back up, shell necklace bouncing, villagers' heads snapping round.",
+    "Straight down from a drone, tracking: he zigzags between villagers crossing a platform and vaults a stack of shell "
+    "pots; one pot topples and splashes into the glass-clear water.",
+    "Wide, side on, long lens from far across the water: he leaps the gap between two platforms, a dark shape against "
+    "the huge moon, lands hard, and a loose plank drops away into the water behind him.",
+    "Underwater, looking up through the glass-clear water: his shadow races across a swaying rope bridge above; the whole "
+    "bridge bucks under him and one foot punches through a missing slat, then he is gone.",
+    "His point of view, running: the walkway rushing at the lens, rope rails whipping past; he clips a hanging seed-pod "
+    "lamp that swings hard, ducks under a low branch, and a small child darts across in front of him.",
+    "Low angle up a giant stilt root: he climbs a tall ladder hand over hand, fast, grabs a kelp rope at the top and "
+    "swings out over the water in a long arc.",
+    "Close-up from the front, the camera racing backward: his face twisted with fear, panting, drops flying off his gill "
+    "frills; he drops onto a lower walkway in a skid, water spraying, and sprints on.",
+    "Wide, from behind THE RUNNER: he runs up a short ramp onto the wide platform where THE CHIEF and THE STRONG ONE "
+    "haul the fishing net out of the water, and slows, chest heaving.",
+]
+RUN_COVER = dict(
+    RUN_MULTICUT, n=2, slug="the-run-coverage", title="THE RUN, TEN FAST SHOTS",
+    spec=(f"{len(RUN_COVER_SHOTS)} SHOTS joined by hard cuts (Hard cut transition), 3 seconds each; every shot a new "
+          "angle and a new obstacle, the camera moving fast in every shot, the action never pausing. Real speed all "
+          "through; no slow motion, no dissolve, no crossfade."),
+    beats=[f"Shot {i} [{3 * (i - 1)}-{3 * i}s] {c}" for i, c in enumerate(RUN_COVER_SHOTS, 1)],
+)
 GROUPS["g9"] = ["r01"]
+GROUPS["g9c"] = ["r02"]
 GROUP_LENGTHS = {"g5": {"n06": 7, "n07": 13, "n13": 10},
                  # the spot refires: G5's own lengths, the wave cut to 10 s and the waking to 9 s
                  "g5a": {"n06": 7}, "g5b": {"n07": 10}, "g5c": {"n13": 9}}
-GROUP_NATURAL = {"g7", "g8", "g9"}  # paid: no stretch, fewer seconds, fewer credits
+GROUP_NATURAL = {"g7", "g8", "g9", "g9c"}  # paid: no stretch, fewer seconds, fewer credits
 MOOD = {
     "n02": ("MOOD: the start of the most fantastical passage of the film, as if they slip into a fairy tale. From the "
             "moment THE MOUNT passes under the surface the shot runs in slow motion, about half speed: silver bubbles, "
@@ -423,6 +458,7 @@ def main():
     by_key["x_longtake"] = LONG_TAKE
     by_key["x_shadow"] = SHADOW_TAKE
     by_key["r01"] = RUN_MULTICUT
+    by_key["r02"] = RUN_COVER
     for k in a.keys:
         if k in GROUPS:
             text, order, total = render_group([by_key[x] for x in GROUPS[k]], a.token, k)
