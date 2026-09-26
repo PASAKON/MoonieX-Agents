@@ -335,12 +335,85 @@ RUN_COVER = dict(
           "through; no slow motion, no dissolve, no crossfade."),
     beats=[f"Shot {i} [{3 * (i - 1)}-{3 * i}s] {c}" for i, c in enumerate(RUN_COVER_SHOTS, 1)],
 )
+# CEO 2026-09-26, after seeing both: separate shots drift too much ("ถ่ายแยกไม่ได้มีโอกาสเพี้ยนสูงมาก"); ONE 30-s clip in the
+# pacing of the Seedance parkour example he picked (youmind parkour-multi-character-rooftop-7868: 8 cuts in 14 s,
+# 1.5-2 s each, wide-angle action lens, low rear tracking, handheld retreating, overhead, drone, a camera circling in
+# mid-air). Ends when THE RUNNER reaches THE CHIEF and THE STRONG ONE, before any line is spoken. Every obstacle has a
+# reason to be there (the morning's own work: nets drying after the dawn catch, a beam carried to mend a roof, rope
+# being made, a bridge snapped in last night's wind). A broken bridge, a swimmer's racing dive, a streamline glide and
+# a climb out on his own momentum (never floating up), one collision with "Sorry!" and on without losing speed.
+RUN_PARKOUR_CUTS = [
+    (0.0, 1.8, "Drone from diagonal rear above, dropping fast: the village of giant mangrove trees on glass-clear water in "
+               "the morning; THE RUNNER sprints out along a wooden walkway and the camera dives in behind him."),
+    (1.8, 3.6, "Low angle from the front, handheld, the camera racing backward just ahead of him: his face twisted with "
+               "fear, gill frills flared pale, bare webbed feet pounding the planks."),
+    (3.6, 5.4, "Lateral tracking, wide-angle lens: the fishermen's kelp nets hang across the walkway to dry after the dawn "
+               "catch; he drops into a slide under the lowest net without slowing, the mesh brushing his back, and "
+               "springs up running."),
+    (5.4, 7.2, "Low-angle rear tracking: two villagers carry a long driftwood beam across the walkway to mend a hut roof; "
+               "he plants both hands on the beam and kong-vaults over it, the two villagers flinching."),
+    (7.2, 9.0, "Overhead moving camera, straight down: a villager is rolling a big coil of new kelp rope across the planks; "
+               "he hurdles the coil and weaves between two more villagers."),
+    (9.0, 11.0, "Front low angle, wide: ahead of him a rope bridge between two giant trees snapped in last night's wind; its "
+                "middle is gone, torn slats and frayed ropes hanging down into the water. A villager at the near end, "
+                "holding new planks for the repair, waves both arms at him to stop. He does not slow down."),
+    (11.0, 12.8, "Fast side tracking: at the broken end he launches a competitive swimmer's racing dive: body stretched "
+                 "long and straight, arms extended past his head, hands together, gill frills flat, flying out and down "
+                 "at a shallow angle toward the water."),
+    (12.8, 14.6, "The camera plunges in with him: a clean entry with little splash, then underwater in the glass-clear "
+                 "turquoise water he glides in a tight streamline and gives two strong dolphin kicks, bubbles streaming "
+                 "off him, sun shafts cutting down through the water."),
+    (14.6, 16.4, "Low, at the water surface: carried by that speed he surfaces beside a giant stilt root on the far side, "
+                 "grabs a ladder rung with both hands and, in one swing of his body, pulls himself up and out onto the "
+                 "walkway, water pouring off him."),
+    (16.4, 18.2, "Handheld, retreating in front of him: soaking wet, he is already running at full speed again, water "
+                 "flying from his gill frills and his kelp belt."),
+    (18.2, 20.0, "Tracking round the corner of a hut: he runs shoulder-first into a plump villager in peach-coral carrying "
+                 "an armful of drying kelp; the kelp flies up; he catches her arm to steady her, gasps \"Sorry!\", and is "
+                 "already running on."),
+    (20.0, 21.8, "From behind the villager: she stands in the falling kelp staring after him as he races away down the "
+                 "walkway without losing any speed."),
+    (21.8, 23.6, "Drone from diagonal rear above: planks have been lifted out of the walkway for mending, leaving gaps; he "
+                 "precision-jumps from beam to beam across them."),
+    (23.6, 25.4, "Extreme close-up tracking at plank level: his wet bare feet slap the planks, skid round a turn and push "
+                 "off again."),
+    (25.4, 27.4, "Wide, long lens from far away: at the edge of the village THE CHIEF and THE STRONG ONE stand on a wide "
+                 "fishing platform hauling a net out of the water; the tiny figure of THE RUNNER races along the walkway "
+                 "toward them."),
+    (27.4, 30.0, "Low-angle rear tracking, slowing down: he runs up onto the platform and stumbles to a stop in front of "
+                 "THE CHIEF and THE STRONG ONE, chest heaving, dripping; the two of them stop hauling and turn to look at "
+                 "him. Nobody speaks. Hold on the three of them to the end."),
+]
+RUN_PARKOUR = dict(
+    RUN_MULTICUT, n=3, slug="the-run-parkour", title="THE RUN, PARKOUR CUTS",
+    spec=(f"{len(RUN_PARKOUR_CUTS)} CUTS joined by hard cuts at the times given, about 2 seconds each, cinematic freerunning "
+          "footage; a wide-angle action lens, the camera moving fast in every cut and following him, a new angle every "
+          "cut. Real speed all through; no slow motion, no dissolve, no crossfade."),
+    heading="MORNING IN THE VILLAGE. A young fisherman runs in panic across the whole village, through the morning's work "
+            "going on around him, to reach THE CHIEF, who is out hauling the fishing net with THE STRONG ONE. Use the "
+            "pictures as absolute character references: keep each character's face, body, height, skin colour, gill "
+            "frills and outfit the same in every cut; never swap or blend two people.",
+    frame="The village in every cut: wooden walkways, rope bridges, ladders, glowing grass, glass-clear water below; the "
+          "same THE RUNNER, mustard-yellow, in every cut of him. From cut 8 on he is soaking wet.",
+    quality=("Live-action film quality, world-class freerunning: real centre-of-gravity shifts, muscles working, natural "
+             "landing impacts, kelp rope and shell necklace swinging; a sharp background, motion blur only in the fastest "
+             "moves. The dive and the climb out are real athletic moves: he never floats, hovers or flies."),
+    beats=[f"CUT {i} [{a:g}-{b:g}s] {c}" for i, (a, b, c) in enumerate(RUN_PARKOUR_CUTS, 1)],
+    sound=("THE RUNNER's loud ragged panting all through, his bare feet slapping the planks, the splash of the dive and "
+           "the rush of water, his grunt on each vault and landing, the thump of the collision, and one gasped word: "
+           "\"Sorry!\""),
+    crit=B.DIALOGUE_NEG + ", no slow motion, no dissolve, no crossfade, no floating, no hovering, no flying up out of the "
+         "water, no belly flop, no unnatural landings, no face distortion, no extra limbs, no duplicate people, no body "
+         "fusion, no warping, no second runner, no weapon, no orange skin on the runner, no blue skin on the runner, no "
+         "smile, no grin, no fish, no boat, no metal, no split screen, no text, no anime style, no CG look",
+)
 GROUPS["g9"] = ["r01"]
 GROUPS["g9c"] = ["r02"]
+GROUPS["g9p"] = ["r03"]
 GROUP_LENGTHS = {"g5": {"n06": 7, "n07": 13, "n13": 10},
                  # the spot refires: G5's own lengths, the wave cut to 10 s and the waking to 9 s
                  "g5a": {"n06": 7}, "g5b": {"n07": 10}, "g5c": {"n13": 9}}
-GROUP_NATURAL = {"g7", "g8", "g9", "g9c"}  # paid: no stretch, fewer seconds, fewer credits
+GROUP_NATURAL = {"g7", "g8", "g9", "g9c", "g9p"}  # paid: no stretch, fewer seconds, fewer credits
 MOOD = {
     "n02": ("MOOD: the start of the most fantastical passage of the film, as if they slip into a fairy tale. From the "
             "moment THE MOUNT passes under the surface the shot runs in slow motion, about half speed: silver bubbles, "
@@ -424,6 +497,8 @@ def render_group(scs, style, gkey=None):
             sec.append("THE LIGHT: " + B.LIGHT + (" " + sc["light_extra"] if sc.get("light_extra") else ""))
         if sc.get("particles"):
             sec.append("PARTICLES: " + sc["particles"])
+        if sc.get("quality"):
+            sec.append("QUALITY: " + sc["quality"])
         if MOOD.get(tag(sc)):
             sec.append(MOOD[tag(sc)])
         if sc.get("actions"):
@@ -459,6 +534,7 @@ def main():
     by_key["x_shadow"] = SHADOW_TAKE
     by_key["r01"] = RUN_MULTICUT
     by_key["r02"] = RUN_COVER
+    by_key["r03"] = RUN_PARKOUR
     for k in a.keys:
         if k in GROUPS:
             text, order, total = render_group([by_key[x] for x in GROUPS[k]], a.token, k)
