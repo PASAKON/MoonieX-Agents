@@ -228,10 +228,84 @@ LONG_TAKE = dict(
          "roar, no teeth, no third eye, no waves, "
          "no light wider than 2 metres around the child, no eyes before the last beat",
 )
+# CEO 2026-09-26 on the opening: the run to THE CHIEF (about 9 s of G1, one lateral tracking take) becomes 30 s, "Multicut
+# ตัดสลับแบบรวดเร็ว ที่ไม่ได้ Focus แต่ตัวเขา ... มุม Focus จุดเล็ก เป็น LongShot ... ใช้ 0.5 0.8". Many more obstacles, every
+# cut 0.5-0.8 s, detail inserts and long shots between the shots of him. It ends where G1 is at about 9 s (he runs up
+# onto the platform where THE CHIEF and THE STRONG ONE haul the net), so the edit cuts from this straight into G1's
+# arrival and lines. Prefix "r" keeps it off the mount guard: nobody rides THE MOUNT here.
+RUN_CUTS = [
+    (0.0, "Extreme wide aerial from very high: the whole village of giant mangrove trees on glass-clear water under the "
+          "huge moon; a tiny yellow figure bursts out onto a walkway."),
+    (0.8, "Extreme close-up: THE RUNNER's bare webbed feet slam onto the wet planks, water flicking up."),
+    (1.4, "Close-up, handheld: THE RUNNER's face twisted with fear, gill frills flared pale, panting."),
+    (2.0, "Low angle from under the walkway, looking up between the planks: his feet flash over the gaps, drops falling "
+          "toward the lens."),
+    (2.6, "Medium, fast side tracking: THE RUNNER runs flat out left to right along the walkway."),
+    (3.3, "Extreme close-up: his shell necklace bouncing against his chest."),
+    (3.8, "Medium: a kelp net hung to dry right across the walkway; he ducks under it at full speed."),
+    (4.5, "From behind: the net still swinging where he passed, THE RUNNER racing away."),
+    (5.1, "Close-up: a villager's head snaps round as THE RUNNER blurs past in the foreground."),
+    (5.6, "Wide, long lens from far across the water: a tiny figure running along a walkway between two giant trees."),
+    (6.4, "Medium, low: two villagers carry a long wooden pole across the walkway; he slides under it on the wet planks."),
+    (7.2, "Extreme close-up: his hands slap the planks as he springs back up."),
+    (7.7, "Straight down from a drone, tracking: he zigzags between villagers crossing a platform."),
+    (8.4, "Medium: shell pots stacked on the walkway; he vaults them and one topples."),
+    (9.1, "Extreme close-up: the pot splashes into the glass-clear water."),
+    (9.6, "Wide, side on: he leaps the gap between two platforms, a dark shape against the huge moon."),
+    (10.4, "Underwater, looking up through the glass-clear water: his shadow flies across the bright surface above."),
+    (11.1, "Extreme close-up: his feet land hard on the far edge; a loose plank drops away into the water."),
+    (11.7, "His point of view, running: the walkway rushing at the lens, rope rails whipping past, a villager jumping aside."),
+    (12.4, "Close-up: a hanging seed-pod lamp he clips with his shoulder, swinging hard."),
+    (12.9, "Medium, low: a curved branch across the path; he ducks under it, gill frills brushing the leaves."),
+    (13.5, "Wide, from a high branch looking down: he hits a swaying rope bridge and the whole bridge bucks under him."),
+    (14.3, "Extreme close-up: a missing slat in the rope bridge; his foot skips over the gap."),
+    (14.8, "Close-up from the front, the camera racing backward: panting, eyes wide, tearing across the bridge."),
+    (15.4, "Medium: a small child runs the other way; he twists sideways to miss her."),
+    (16.0, "Medium: he bursts through a hanging curtain of drying kelp strips beside a hut roof of glowing green grass."),
+    (16.7, "Low angle: the bridge ends at a tall ladder lashed to a giant stilt root; he grabs it."),
+    (17.3, "Extreme close-up: his hands grabbing the rungs, hand over hand."),
+    (17.8, "Straight down: he climbs fast, the glass-clear water far below him."),
+    (18.5, "Wide, long lens from across the water: a tiny figure high on the giant root."),
+    (19.2, "Medium: at the top he grabs a kelp rope hanging from a branch and swings out over the water."),
+    (20.0, "Wide, side on, tracking: the long arc of the swing over glass-clear water, the moon behind him."),
+    (20.8, "Extreme close-up: the kelp rope creaking in his fist."),
+    (21.3, "Low, from just above the water: he drops onto a lower walkway and skids, water spraying."),
+    (22.0, "Close-up: an old grey villager steps back, startled."),
+    (22.5, "Medium tracking: he gets his footing and sprints again."),
+    (23.1, "Extreme close-up: his panting mouth, drops flying off his gill frills."),
+    (23.6, "Wide aerial: the walkway runs ahead to a wide platform where two figures haul a net out of the water."),
+    (24.4, "Medium: he leaps a coil of kelp rope lying across the planks."),
+    (25.0, "Extreme close-up: his feet skid on the wet planks and push off again."),
+    (25.5, "Close-up: THE STRONG ONE's big green hands hauling the wet net, hand over hand."),
+    (26.2, "Close-up: THE CHIEF under his gemstone crown, hauling the net, not yet looking up."),
+    (26.8, "Low, from the front, the camera racing backward: THE RUNNER sprinting straight at the lens, desperate."),
+    (27.5, "Wide, from behind THE RUNNER: he runs up a short ramp onto the wide platform where THE CHIEF and THE STRONG ONE "
+           "haul the fishing net out of the water, and slows, chest heaving. This last shot holds until the end."),
+]
+RUN_MULTICUT = dict(
+    prefix="r", n=1, slug="the-run-multicut", title="THE RUN, FAST MULTI-CUT", s=30, grade="DAY", montage=True,
+    spec=(f"A FAST-CUT ACTION MONTAGE of {len(RUN_CUTS)} shots joined by hard cuts at the times given: every cut 0.5 to "
+          "0.8 seconds, only the last shot longer. Each shot is a new angle: extreme close-ups of small details, long "
+          "shots from far away, low angles, straight-down drone shots, his point of view, underwater looking up; the "
+          "camera is not only on his face. Real speed all through; no slow motion, no dissolve, no crossfade."),
+    refs=["@RunnerY", "@Village", "@Villagers", "@Villagers2", "@Chief", "@Strong"],
+    heading="MORNING IN THE VILLAGE. A young fisherman runs in panic across the whole village, over and under everything "
+            "in his way, to reach THE CHIEF, who is out hauling the fishing net with THE STRONG ONE.",
+    frame="The village in every shot: wooden walkways, rope bridges, ladders, glowing grass, glass-clear water below; "
+          "the same THE RUNNER, mustard-yellow, in every shot of him.",
+    particles="water flicking up from his feet, sea spray glinting, a few glowing specks drifting in the air.",
+    beats=[f"[{t:g}s] {c}" for t, c in RUN_CUTS],
+    sound="THE RUNNER's loud ragged panting all through, his bare feet slapping the wet planks, the splash of his "
+          "steps, his grunt on each jump and landing; no words",
+    crit=B.NO_WORDS + ", no slow motion, no dissolve, no crossfade, no second runner, no one falling into the water, no "
+         "weapon, no orange skin on the runner, no blue skin on the runner, no calm faces, no smile, no grin, no fish, no "
+         "boat, no metal, no split screen, no text",
+)
+GROUPS["g9"] = ["r01"]
 GROUP_LENGTHS = {"g5": {"n06": 7, "n07": 13, "n13": 10},
                  # the spot refires: G5's own lengths, the wave cut to 10 s and the waking to 9 s
                  "g5a": {"n06": 7}, "g5b": {"n07": 10}, "g5c": {"n13": 9}}
-GROUP_NATURAL = {"g7", "g8"}  # paid: no stretch, fewer seconds, fewer credits
+GROUP_NATURAL = {"g7", "g8", "g9"}  # paid: no stretch, fewer seconds, fewer credits
 MOOD = {
     "n02": ("MOOD: the start of the most fantastical passage of the film, as if they slip into a fairy tale. From the "
             "moment THE MOUNT passes under the surface the shot runs in slow motion, about half speed: silver bubbles, "
@@ -299,7 +373,9 @@ def render_group(scs, style, gkey=None):
         beats = [re.sub(r"\[(\d+(?:\.\d+)?)s\]", lambda m: f"[{round(start + float(m.group(1)) * f, 1):g}s]", b)
                  for b in beats]
         snd = sc.get("sound") or B.SOUND.get(key, "silence; nobody speaks")
-        sec = [f"SHOT {i} of {len(scs)}, from {start:g}s to {end:g}s: {sc['title']}. {_inside_shot(sc['spec'])}",
+        label = (f"THE MONTAGE, from {start:g}s to {end:g}s: {sc['title']}. {sc['spec']}" if sc.get("montage") else
+                 f"SHOT {i} of {len(scs)}, from {start:g}s to {end:g}s: {sc['title']}. {_inside_shot(sc['spec'])}")
+        sec = [label,
                sc["heading"], "THE FRAME: " + sc["frame"]]
         state = sc.get("state") or B.STATE.get(key)
         if state:
@@ -323,7 +399,8 @@ def render_group(scs, style, gkey=None):
                 B.GRADE[sc.get("grade_override", sc["grade"])],
                 # CEO 2026-09-26 ("No Music แบบ Seedance"): the house-negatives wall is dropped for Wan3, so its music
                 # ban is repeated in every shot's own negatives, not only in the sound line.
-                "Avoid in this shot: " + _inside_shot(sc["crit"]) + ", no music, no score, no background music."]
+                "Avoid in this shot: " + (sc["crit"] if sc.get("montage") else _inside_shot(sc["crit"]))
+                + ", no music, no score, no background music."]
         parts.append("\n".join(sec))
         t = end
     return "\n\n".join(parts), order, total
@@ -345,6 +422,7 @@ def main():
     by_key = {f"{s.get('prefix', 'm')}{s['n']:02d}": s for s in B.SCENES}
     by_key["x_longtake"] = LONG_TAKE
     by_key["x_shadow"] = SHADOW_TAKE
+    by_key["r01"] = RUN_MULTICUT
     for k in a.keys:
         if k in GROUPS:
             text, order, total = render_group([by_key[x] for x in GROUPS[k]], a.token, k)
