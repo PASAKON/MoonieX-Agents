@@ -407,13 +407,72 @@ RUN_PARKOUR = dict(
          "fusion, no warping, no second runner, no weapon, no orange skin on the runner, no blue skin on the runner, no "
          "smile, no grin, no fish, no boat, no metal, no split screen, no text, no anime style, no CG look",
 )
+# CEO 2026-09-27 on the wave (N7): "MultiCut 15s ... 3 ตัวละครนี้ ดูพยายามที่จะผ่านมันไปให้ได้ มีการจับเชือกไว้แน่น โต้คลื่นได้ 1 ลูก
+# แต่ถัดไปมันใหญ่กว่านั้นมาก แล้วให้คลื่นซัดมาที่จอ ปิดจบด้วยจอดำ". Eight cuts of about 2 s in the parkour pacing he chose
+# for the run. Prefix "x" puts it under the mount guard, so THE MOUNT's picture cannot be left out again (G5).
+# The second wave needs something to show its size in the dark: violet lightning far behind it, taken from the wave
+# plate itself, is the one light allowed besides the child.
+WAVE_CUTS = [
+    (0, 2, "GLOW Wide and low from the water behind THE MOUNT: in the black storm sea a big wave rises ahead of them; "
+           "THE THREE RIDERS crouch low on the seat, bracing."),
+    (2, 4, "Close-ups, hands on the ropes: THE STRONG ONE's big green hand wraps the kelp rope twice round his fist; "
+           "THE ELDER's hand grips the seat's rope lashing; THE YOUNG ONE's small webbed hands clutch the bone-rib "
+           "backrest, knuckles tight."),
+    (4, 6, "Side tracking, wide-angle lens, the camera shaking hard: THE MOUNT climbs the steep face of the first wave; "
+           "THE STRONG ONE drives THE POLE down and shouts \"Hold on!\"; all three lean forward into the climb."),
+    (6, 8, "From above the crest: THE MOUNT bursts over the top and slams down the back of the wave, spray exploding "
+           "through the gold light; the riders are thrown up off the seat and held on only by the ropes, then land "
+           "back on it. They made it through."),
+    (8, 10, "Close-up, THE YOUNG ONE's face lit gold, dripping: relief, then the eyes go wide as the child looks up past "
+            "the camera."),
+    (10, 12, "Low and wide from behind the riders, looking ahead: the next wave rises out of the dark, many times bigger "
+             "than the first, a black wall as tall as a mountain filling the whole frame above them; far behind it "
+             "violet lightning flashes and shows its size. THE MOUNT is tiny at its foot."),
+    (12, 13.5, "From in front, low, looking back at THE THREE RIDERS with the wave curling high above them: its lip "
+               "breaks and the whole wall crashes down toward the camera."),
+    (13.5, 15, "The water slams straight into the lens and the frame goes completely black; it stays black to the end."),
+]
+WAVE_MULTICUT = dict(
+    prefix="x", n=3, slug="the-wave-multicut", title="THE WAVES, FAST MULTI-CUT", s=15, montage=True, lit=True,
+    grade="DARK", grade_override="DARK_GLOW",
+    spec=(f"{len(WAVE_CUTS)} CUTS joined by hard cuts at the times given, about 2 seconds each; a wide-angle lens, the "
+          "camera shaking and moving with the sea in every cut, a new angle every cut. Real speed; no slow motion, no "
+          "dissolve, no crossfade."),
+    refs=["@Manta", "@LanternDark", "@Strong", "@Young", "@Elder", "@Pole", "@Waves", "@Turning"],
+    ref_override={"@Manta": MANTA_JOB, "@LanternDark": DEAD_LANTERN_JOB, "@Turning": B.TURNING_IN_CIRCLE,
+                  "@Waves": "THE WAVES: take the colossal curling walls of dark water, their size and shape, and the "
+                            "violet lightning far behind them; not the cyan and magenta glow inside them."},
+    heading="THE WAVES. On the back of THE MOUNT, THE THREE RIDERS fight to get through a storm sea: they ride over "
+            "one big wave, and the next is far bigger. Keep each rider's face, body and colours the same in every cut.",
+    frame="THE MOUNT small on the black storm sea with THE THREE RIDERS on its seat: THE STRONG ONE on the front perch "
+          "with THE POLE, THE YOUNG ONE glowing in the middle, THE ELDER at the back holding the child.",
+    state=MOUNT_SEEN + " " + B.WET,
+    light_extra="The only other light: violet lightning flashing far off behind the second wave, an instant at a time.",
+    particles="heavy rain, spray torn off the wave crests, foam tumbling through the gold light.",
+    quality=("Live-action film quality: real weight, the riders' bodies thrown by the sea and pulling themselves back "
+             "down by the ropes, water pouring off everything; motion blur only in the fastest moves."),
+    actions=["THE STRONG ONE, front perch: rope wrapped round one fist, drives THE POLE down to steer THE MOUNT up the "
+             "wave, jaw clenched, shouting once; never lets go.",
+             "THE YOUNG ONE, middle, glowing: clings to the bone-rib backrest with both hands, eyes squeezed shut on "
+             "the first wave, then opens them and looks up at the second.",
+             "THE ELDER, back: one arm round the child, the other hand locked on the seat's rope lashing, pulling them "
+             "both down onto the seat."],
+    beats=[f"CUT {i} [{a:g}-{b:g}s] {c}" for i, (a, b, c) in enumerate(WAVE_CUTS, 1)],
+    sound="the shout above, spoken once; the riders' gasps and grunts of effort as the first wave throws them; THE YOUNG "
+          "ONE's sharp gasp at the second wave; then silence in the black",
+    crit=B.DIALOGUE_NEG + ", no slow motion, no dissolve, no crossfade, no boat, no raft, no rock, no lit lamp, no light "
+         "wider than 2 metres around the child except the far lightning, no cyan or magenta glow in the water, no one "
+         "falling off before the last cut, no floating, no extra limbs, no duplicate riders, no warping, no text, no "
+         "split screen",
+)
+GROUPS["g5w"] = ["x03"]
 GROUPS["g9"] = ["r01"]
 GROUPS["g9c"] = ["r02"]
 GROUPS["g9p"] = ["r03"]
 GROUP_LENGTHS = {"g5": {"n06": 7, "n07": 13, "n13": 10},
                  # the spot refires: G5's own lengths, the wave cut to 10 s and the waking to 9 s
                  "g5a": {"n06": 7}, "g5b": {"n07": 10}, "g5c": {"n13": 9}}
-GROUP_NATURAL = {"g7", "g8", "g9", "g9c", "g9p"}  # paid: no stretch, fewer seconds, fewer credits
+GROUP_NATURAL = {"g7", "g8", "g9", "g9c", "g9p", "g5w"}  # paid: no stretch, fewer seconds, fewer credits
 MOOD = {
     "n02": ("MOOD: the start of the most fantastical passage of the film, as if they slip into a fairy tale. From the "
             "moment THE MOUNT passes under the surface the shot runs in slow motion, about half speed: silver bubbles, "
@@ -493,7 +552,7 @@ def render_group(scs, style, gkey=None):
         on_mount = key in B.ON_MOUNT or sc.get("prefix") == "x"
         if on_mount and "@Manta" not in sc["refs"]:
             raise SystemExit(f"{sc['title']}: riders on THE MOUNT but no @Manta picture")
-        if key in B.DARK_LIT:
+        if key in B.DARK_LIT or sc.get("lit"):
             sec.append("THE LIGHT: " + B.LIGHT + (" " + sc["light_extra"] if sc.get("light_extra") else ""))
         if sc.get("particles"):
             sec.append("PARTICLES: " + sc["particles"])
@@ -535,6 +594,7 @@ def main():
     by_key["r01"] = RUN_MULTICUT
     by_key["r02"] = RUN_COVER
     by_key["r03"] = RUN_PARKOUR
+    by_key["x03"] = WAVE_MULTICUT
     for k in a.keys:
         if k in GROUPS:
             text, order, total = render_group([by_key[x] for x in GROUPS[k]], a.token, k)
